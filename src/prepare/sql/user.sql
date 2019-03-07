@@ -1,0 +1,10 @@
+insert into movieland.user(user_id, name, email, role, hash, salt) values (1, 'Рональд Рейнольдс', 'ronald.reynolds66@example.com', 'USER', 'pKi/tR+ailgJSowAlp3pdA==', 'D3XYQeM/eXNnQ6gGlQXeKg==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (2, 'Дарлин Эдвардс', 'darlene.edwards15@example.com', 'USER', 'vJb3X2UWE+rOK7ntT9AgNw==', 'Ber+2+1+fKgDBj6Xql8Xrg==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (3, 'Габриэль Джексон', 'gabriel.jackson91@example.com', 'USER', 'UCWVOdL173aTUI35f7gYYQ==', 'JbibEfQEpVFqKSl/DQuViQ==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (4, 'Дэрил Брайант', 'daryl.bryant94@example.com', 'USER', 'VjvSdLnU3+FCrtfgyhtsVg==', '6JPtnEF34S31oHWRv7JXfA==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (5, 'Нил Паркер', 'neil.parker43@example.com', 'USER', 'JUBLqmIIJ4lPY8ahYfQE6A==', 'd/YKeULhcll6TNu0cD9kqA==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (6, 'Трэвис Райт', 'travis.wright36@example.com', 'USER', 'BQPmk919W3IffayakLuxiw==', '+yWDaxIAWVqa6Zro4IK4kg==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (7, 'Амелия Кэннеди', 'amelia.kennedy58@example.com', 'USER', 'cLjwnfz+siUJHIbvuQsoIA==', 'A2EIySIEknRNr9r9TVz+Vw==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (8, 'Айда Дэвис', 'ida.davis80@example.com', 'USER', 'RtVKe0IZxc079XPJ58QZdw==', 'Jfr/r4UJlbiplxO7jtXhPg==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (9, 'Джесси Паттерсон', 'jessie.patterson68@example.com', 'USER', 'uY+AjUQ3RsfsqN5mIiVeiA==', '6MilArdPIUzhGSxCBzJTlA==');
+insert into movieland.user(user_id, name, email, role, hash, salt) values (10, 'Деннис Крейг', 'dennis.craig82@example.com', 'USER', '6Uff7R5apa2b6fZSzPr1uw==', 'fpTH1oZq53uXOAx0pR4zHA==');
