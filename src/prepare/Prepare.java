@@ -1,5 +1,3 @@
-package prepare;
-
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,6 +12,7 @@ public class Prepare {
     private static Map<String, Integer> users = new HashMap<>();
     private static Map<String, Integer> movies = new HashMap<>();
     private static Map<String, String> posters = new HashMap<>();
+    private static Map<String, Integer> countries = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         String line;
@@ -90,9 +89,11 @@ public class Prepare {
         // Movie
         reader = new BufferedReader(new FileReader(pathTxt + "movie.txt"));
         writer = new BufferedWriter(new FileWriter(pathSql + "movie.sql"));
-        BufferedWriter writer2 = new BufferedWriter(new FileWriter(pathSql + "movie_genre.sql"));
+        BufferedWriter writerMG = new BufferedWriter(new FileWriter(pathSql + "movie_genre.sql"));
+        BufferedWriter writerMC = new BufferedWriter(new FileWriter(pathSql + "movie_country.sql"));
 
         id = 1;
+        int countryId = 1;
         String mName = "";
         String mYear = "";
         String mCountry = "";
@@ -134,15 +135,26 @@ public class Prepare {
 
                 movies.put(nameRus, id);
 
-                writer.write("insert into movieland.movie(movie_id, name, name_original, year, country, description, poster_url, rating, price) values (" +
-                        id + ", '" + nameRus + "', '" + nameOrig + "', '" + mYear + "', '" + mCountry + "', '" + mDescription + "', '" + posterUrl + "', " + rating + ", " + price + ");");
+                writer.write("insert into movieland.movie(movie_id, name, name_original, year, description, poster_url, rating, price) values (" +
+                        id + ", '" + nameRus + "', '" + nameOrig + "', '" + mYear + "', '" + mDescription + "', '" + posterUrl + "', " + rating + ", " + price + ");");
                 writer.newLine();
 
                 String[] genreList = mGenre.split(", ");
                 for (String genre : genreList) {
-                    writer2.write("insert into movieland.movie_genre(movie_id, genre_id) values (" + id + ", " + genres.get(genre) + ");");
-                    writer2.newLine();
+                    writerMG.write("insert into movieland.movie_genre(movie_id, genre_id) values (" + id + ", " + genres.get(genre) + ");");
+                    writerMG.newLine();
                 }
+
+                String[] countryList = mCountry.split(", ");
+                for (String country : countryList) {
+                    if (!countries.containsKey(country)) {
+                        countries.put(country, countryId);
+                        countryId++;
+                    }
+                    writerMC.write("insert into movieland.movie_country(movie_id, country_id) values (" + id + ", " + countries.get(country) + ");");
+                    writerMC.newLine();
+                }
+
 
                 mName = "";
                 mYear = "";
@@ -156,7 +168,16 @@ public class Prepare {
         }
         reader.close();
         writer.close();
-        writer2.close();
+        writerMG.close();
+        writerMC.close();
+
+        // Countries
+        writer = new BufferedWriter(new FileWriter(pathSql + "country.sql"));
+        for (String country : countries.keySet()) {
+            writer.write("insert into movieland.country(country_id, name) values (" + countries.get(country) + ", '" + country + "');");
+            writer.newLine();
+        }
+        writer.close();
 
 
         // Review
