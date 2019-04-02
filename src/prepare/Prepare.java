@@ -1,6 +1,8 @@
+package prepare;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import java.io.*;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.*;
 
@@ -13,6 +15,8 @@ public class Prepare {
     private static Map<String, Integer> movies = new HashMap<>();
     private static Map<String, String> posters = new HashMap<>();
     private static Map<String, Integer> countries = new HashMap<>();
+
+    private static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public static void main(String[] args) throws IOException {
         String line;
@@ -218,14 +222,15 @@ public class Prepare {
     }
 
     private static String getHash(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(password.getBytes());
-            byte[] digest = md.digest();
-            return Base64.getEncoder().encodeToString(digest);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+        return passwordEncoder.encode(password);
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            md.update(password.getBytes());
+//            byte[] digest = md.digest();
+//            return Base64.getEncoder().encodeToString(digest);
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private static String getSalt() {
