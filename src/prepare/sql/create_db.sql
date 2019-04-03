@@ -15,8 +15,7 @@ CREATE TABLE movieland.user (
     name varchar(100) not null,
   	email varchar(100) not null,
 	role varchar(15) not null,
-  	hash varchar(100) not null,
-  	salt varchar(100) not null
+  	hash varchar(100) not null
 );
 CREATE UNIQUE INDEX user_email_UNIQUE ON movieland.user (email);
 
@@ -35,7 +34,7 @@ CREATE TABLE movieland.review (
 	review_id serial primary key,
 	movie_id integer not null references movieland.movie(movie_id),
 	user_id integer not null references movieland.user(user_id),
-	text varchar(4000)
+	text varchar(4000) not null
 );
 CREATE UNIQUE INDEX review_UNIQUE ON movieland.review (movie_id, user_id);
 

@@ -61,13 +61,13 @@ public class Prepare {
             }
 
             if (!userPassword.isEmpty()) {
-                String salt = getSalt();
-                String hash = getHash(userPassword + salt);
+                //String salt = getSalt();
+                String hash = getHash(userPassword /*+ salt*/);
                 String role = "USER";
 
                 users.put(userName, id);
 
-                writer.write("insert into movieland.user(user_id, name, email, role, hash, salt) values (" + id + ", '" + userName + "', '" + userEmail + "', '" + role + "', '" + hash + "', '" + salt + "');");
+                writer.write("insert into movieland.user(user_id, name, email, role, hash) values (" + id + ", '" + userName + "', '" + userEmail + "', '" + role + "', '" + hash + "');");
                 writer.newLine();
                 userName = "";
                 userEmail = "";
