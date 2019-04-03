@@ -209,7 +209,7 @@ public class Prepare {
                 int movieId = movies.get(rMovie);
                 int userId = users.get(rUser);
 
-                writer.write("insert into movieland.review(review_id, movie_id, user_id, text) values (" + id + ", " + movieId + ", " + userId + ", '" + rText + "');");
+                writer.write("insert into movieland.review(movie_id, user_id, text) values (" + movieId + ", " + userId + ", '" + rText + "');");
                 writer.newLine();
                 rMovie = "";
                 rUser = "";
