@@ -1,5 +1,3 @@
-package prepare;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.*;
@@ -63,7 +61,7 @@ public class Prepare {
             if (!userPassword.isEmpty()) {
                 //String salt = getSalt();
                 String hash = getHash(userPassword /*+ salt*/);
-                String role = "USER";
+                String role = id == 2 ? "ADMIN" : "USER";
 
                 users.put(userName, id);
 

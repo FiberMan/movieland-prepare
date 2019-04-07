@@ -20,7 +20,8 @@ CREATE TABLE movieland.user (
 CREATE UNIQUE INDEX user_email_UNIQUE ON movieland.user (email);
 
 CREATE TABLE movieland.movie (
-    movie_id serial primary key,
+    --movie_id serial primary key,
+    movie_id integer default movieland.movie_movie_id_seq.nextval primary key,
     name varchar(100) not null,
 	name_original varchar(100) not null,
 	year varchar(50),
